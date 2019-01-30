@@ -1,0 +1,14 @@
+extends ../layout.pug
+
+block content
+  h2= museum.name
+  div
+    img(src=museum.imageUrl)
+
+  h3 Description
+  p Lorem ipsum dolor amet plaid selvage before they sold out pug man bun hell of post-ironic organic brunch celiac. Lumbersexual pug mustache direct trade, four loko semiotics cray typewriter vinyl. 
+  p Austin 8-bit everyday carry viral af sustainable cornhole street art distillery palo santo activated charcoal edison bulb. Kale chips try-hard pabst, listicle shoreditch mumblecore trust fund marfa stumptown DIY gochujang church-key. 
+
+  h3 Famous pieces
+  each piece in museum.pieces
+    =piece.name

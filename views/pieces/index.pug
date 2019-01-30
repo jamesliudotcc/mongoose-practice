@@ -1,0 +1,23 @@
+extends ../layout.pug
+
+block content
+  h2 Pieces List
+  p TODO: Add a forEach loop and show the names of all pieces
+  p In parentheses, show the name of the museum it is located in
+  p The name should be a link to the piece show page
+
+  h3 For example
+
+  p
+    a(href="/pieces/<%='the_actual_id_goes_here'%>") 
+    span Mona Lisa (The Louvre - Paris)
+
+  p
+    a(href="/pieces/<%='the_actual_id_goes_here'%>") 
+    span Night's Watch  (Rijksmuseum - Amsterdam)
+
+  each piece in pieces
+    =piece.name
+    =` by `
+    =piece.creator.firstName  
+    =piece.creator.lastName

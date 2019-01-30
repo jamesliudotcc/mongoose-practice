@@ -3,10 +3,16 @@ const express = require('express');
 
 // Declare router
 const router = express.Router();
+const db = require('../models');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   // TODO: Replace stub route with page that renders list of all pieces
-  res.render('pieces/index');
+  try {
+    const pieces = await db.Piece.find().populate('museum');
+    res.render('pieces/index', { pieces: pieces });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.post('/', (req, res) => {

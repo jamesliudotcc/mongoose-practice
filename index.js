@@ -7,10 +7,9 @@ const expressEjsLayouts = require('express-ejs-layouts');
 const app = express();
 
 // Set the view engine
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 
 // TODO: Middleware, etc
-app.use(expressEjsLayouts);
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Declare controllers
@@ -19,9 +18,8 @@ app.use('/pieces', require('./controllers/pieces'));
 
 // Make home route
 app.get('/', (req, res) => {
-  res.render('home');
+  res.render('home.pug');
 });
 
 // TODO: Listen
-app.listen(3000);
-
+app.listen(3006);

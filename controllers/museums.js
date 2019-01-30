@@ -3,6 +3,7 @@ const express = require('express');
 
 // Declare router
 const router = express.Router();
+const db = require('../models');
 
 router.get('/', (req, res) => {
   // TODO: Replace stub route with page that renders list of all museums
@@ -19,10 +20,19 @@ router.get('/new', (req, res) => {
   res.render('museums/new');
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   // TODO: Replace stub route with page that renders museum details
   //  and a list of pieces that musuem contains
-  res.send('museums/show');
+  try {
+    const museum = await db.Museum.findById(req.params.id);
+    const pieces = await db.Piece.find({ museum: museum._id });
+    museum.pieces = (await pieces) || [];
+    console.log(museum.pieces);
+    res.render('museums/show', { museum: museum });
+  } catch (err) {
+    console.log(err);
+    res.send('TODO: Make a beautiful error page for the user');
+  }
 });
 
 module.exports = router;
