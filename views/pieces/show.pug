@@ -1,3 +1,15 @@
 extends ../layout.pug
 
 block content
+  h2= piece.name
+  div
+    img(src=piece.imageUrl)
+
+  h3 Description
+  p YOLO tbh succulents. Kale chips vexillologist synth direct trade, sustainable kogi twee. 
+  p Sartorial twee flannel hella raw denim next level squid health goth messenger bag direct trade unicorn man braid yuccie.
+
+  h3 Information
+  p= `See it at ${piece.museum.name}`
+  p= `By ${piece.creator.firstName} ${piece.creator.lastName} (${piece.creator.birthYear}-${piece.creator.deathYear})`
+  p= `Created in ${piece.originCountry}`

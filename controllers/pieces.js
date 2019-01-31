@@ -25,10 +25,17 @@ router.get('/new', (req, res) => {
   res.render('pieces/new');
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   // TODO: Replace stub route with page that renders piece details
   //  and all the info about it's creator and the museum it's located in
-  res.send('pieces/show');
+  try {
+    const piece = await db.Piece.findById(req.params.id).populate('museum');
+    console.log(piece.museum);
+    res.render('pieces/show', { piece: piece });
+  } catch (err) {
+    console.log(err);
+    res.send('TODO: Make a beautiful error page for the user');
+  }
 });
 
 module.exports = router;

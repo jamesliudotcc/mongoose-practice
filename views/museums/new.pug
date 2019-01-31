@@ -3,4 +3,20 @@ extends ../layout.pug
 block content
   h2.text-center.text-primary Register a New Museum
 
+  form(action="/museums" method="POST")
+    p
+      label(for="name") Museum Name
+      input(type="text", name="name" id="name")
+    p
+      label(for="city") Museum City
+      input(type="text", name="city" id="city")
+    p
+      label(for="country") Museum Country
+      input(type="text", name="country" id="country")    
+    p
+      label(for="imageUrl") Image URL
+      input(type="text", name="imageUrl" id="imageUrl")  
+    p
+      input(type="submit", value="Submit")
+
   <!-- TODO: Add a form for making a new museum. Should post to /museums -->

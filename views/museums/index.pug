@@ -2,7 +2,10 @@ extends ../layout.pug
 
 block content
   h2.text-center Museums List
-
+  each museum in museums
+    p
+      a(href=`/museums/${museum.id}`)
+        = `${museum.name}, ${museum.city}, ${museum.country}`
   <!-- DELETE CODE BELOW THIS LINE -->
   <p>TODO: Add a forEach loop and show the names of all museums</p>
   <p>The name should be a link to the museum show page</p>
