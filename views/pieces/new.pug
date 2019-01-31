@@ -1,7 +1,38 @@
 extends ../layout.pug
 
 block content
+  h2.text-center.text-primary Add a New Piece
+  
+  form(action="/pieces" method="POST")
+    p
+      label(for="name") Piece Name
+      input.form-control(type="text" name="name" id="name")   
+    p
+      label(for="originCountry") Origin Country
+      input.form-control(type="text" name="originCountry" id="originCountry")
+    p
+      label(for="pieceImageUrl") Piece Image URL
+      input.form-control(type="text" name="pieceImageUrl" id="pieceImageUrl")   
+    p
+      label(for="creatorFirstName") Piece Creator First Name
+      input.form-control(type="text" name="creatorFirstName" id="creatorFirstName")
+    p
+      label(for="creatorLastName") Piece Creator Last Name
+      input.form-control(type="text" name="creatorLastName" id="creatorLastName")  
+    p
+      label(for="creatorImageUrl") Creator Image Url
+      input.form-control(type="text" name="creatorImageUrl" id="creatorImageUrl")
+    p
+      label(for="birthYear") Creator born year
+      input.form-control(type="number" name="birthYear" id="birthYear" value="1700")
+    p
+      label(for="deathYear") Creator death year
+      input.form-control(type="number" name="deathYear" id="deathYear" value="1800")         
+    label(for="museum") Museum
+    select.form-control(name="museum" id="museum")
+      each museum in museums
+        option(value=museum.id)= museum.name
+    input.form-control(type="submit" value="Submit")
 
-    <h2 class="text-center text-primary">Add a New Piece</h2>
 
     <!-- TODO: Add a form for making a new piece. Should post to /pieces -->

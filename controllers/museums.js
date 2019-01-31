@@ -13,18 +13,16 @@ router.get('/', async (req, res) => {
     console.log(err);
     res.send('TODO: Make a beautiful error page for the user');
   }
-  res.render('museums/index');
 });
 
 router.post('/', async (req, res) => {
   try {
     db.Museum.create({ ...req.body });
-  } catch {
+    res.redirect('/museums');
+  } catch (err) {
     console.log(err);
     res.send('TODO: Make a beautiful error page for the user');
   }
-
-  res.redirect('/museums');
 });
 
 router.get('/new', (req, res) => {
